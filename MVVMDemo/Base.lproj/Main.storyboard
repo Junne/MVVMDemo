@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,56 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4T-x0-IoM">
+                                <rect key="frame" x="240" y="308" width="120" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="2wS-cp-ppR"/>
+                                    <constraint firstAttribute="height" constant="48" id="iEY-W1-Snq"/>
+                                </constraints>
+                                <state key="normal" title="login"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提示语" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gg8-YB-Mgd">
+                                <rect key="frame" x="107" y="259" width="45" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oO5-hy-1Uc">
+                                <rect key="frame" x="107" y="162" width="387" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hki-Df-60T">
+                                <rect key="frame" x="107" y="212" width="387" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="oO5-hy-1Uc" secondAttribute="trailing" constant="106" id="4Ni-Np-lQD"/>
+                            <constraint firstItem="B4T-x0-IoM" firstAttribute="top" secondItem="hki-Df-60T" secondAttribute="bottom" constant="66" id="CYj-pz-89P"/>
+                            <constraint firstItem="B4T-x0-IoM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F1Q-lO-Btl"/>
+                            <constraint firstItem="hki-Df-60T" firstAttribute="top" secondItem="oO5-hy-1Uc" secondAttribute="bottom" constant="20" id="Qvd-2R-N1g"/>
+                            <constraint firstItem="oO5-hy-1Uc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="142" id="R3U-Mu-eje"/>
+                            <constraint firstItem="hki-Df-60T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="107" id="UxD-Bj-acI"/>
+                            <constraint firstItem="Gg8-YB-Mgd" firstAttribute="top" secondItem="hki-Df-60T" secondAttribute="bottom" constant="17" id="Y2g-Gg-COo"/>
+                            <constraint firstAttribute="trailing" secondItem="hki-Df-60T" secondAttribute="trailing" constant="106" id="YOO-6S-eMh"/>
+                            <constraint firstItem="Gg8-YB-Mgd" firstAttribute="leading" secondItem="hki-Df-60T" secondAttribute="leading" id="cwY-3z-pnU"/>
+                            <constraint firstItem="oO5-hy-1Uc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="107" id="eZH-1t-Wv5"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="B4T-x0-IoM" id="qIW-4X-upT"/>
+                        <outlet property="passwordTextfield" destination="hki-Df-60T" id="xQE-1Z-3s5"/>
+                        <outlet property="tipLabel" destination="Gg8-YB-Mgd" id="8Mb-Gg-7xS"/>
+                        <outlet property="userNameTextField" destination="oO5-hy-1Uc" id="h1V-kJ-Mdx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="324" y="366"/>
         </scene>
     </scenes>
 </document>

@@ -30,10 +30,68 @@
     [super viewDidLoad];
     [self userName];
     [self nameKvo];
-    [self textFieldCombine];
+//    [self textFieldCombine];
     [self buttonAction];
     [self delegateTest];
     [self notificationTest];
+    
+    NSArray *array = @[@1,@2,@3];
+//    RACSequence *stream = [array rac_sequence];
+//    [stream map:^id(id value) {
+//        return @(pow([value integerValue], 2));
+//    }];
+//    NSLog(@"%@", [stream array]);
+    
+    // map method
+    NSLog(@"map = %@", [[[array rac_sequence] map:^id(id value) {
+        return @(pow([value integerValue], 2));
+    }] array ]);
+    
+    // filter mathod
+    
+    NSLog(@"filter = %@", [[[array rac_sequence] filter:^BOOL(id value) {
+        return [value integerValue] % 2 == 0;
+    }] array]);
+    
+    // folding method
+    
+    NSLog(@"fold left = %@", [[[array rac_sequence] map:^id(id value) {
+        return [value stringValue];
+    }] foldLeftWithStart:@"" reduce:^id(id accumulator, id value) {
+        return [accumulator stringByAppendingString:value];
+    }]);
+    
+//    NSLog(@"fold right = %@", [[[array rac_sequence] map:^id(id value) {
+//        return [value stringValue];
+//    }] foldRightWithStart:@"" reduce:^id(id first, RACSequence *rest) {
+//        return [first stringValue];
+//    }]);
+    
+    
+//    RAC(self.loginButton, enabled) = [self.userNameTextField.rac_textSignal map:^id(id value) {
+//        return @([value rangeOfString:@"@"].location != NSNotFound);
+//    }];
+    
+    
+    RACSignal *validEmailSignal = [self.userNameTextField.rac_textSignal map:^id(id value) {
+        return @([value rangeOfString:@"@"].location != NSNotFound);
+    }];
+    
+//    RAC(self.loginButton, enabled) = validEmailSignal;
+//    
+//    RAC(self.userNameTextField, textColor) = [validEmailSignal map:^id(id value) {
+//        if ([value boolValue]) {
+//            return [UIColor greenColor];
+//        } else {
+//            return [UIColor redColor];
+//        }
+//    }];
+    
+    self.loginButton.rac_command = [[RACCommand alloc] initWithEnabled:validEmailSignal signalBlock:^RACSignal *(id input) {
+        NSLog(@"Button was pressed.");
+        return [RACSignal empty];
+    }];
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
